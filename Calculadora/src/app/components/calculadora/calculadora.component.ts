@@ -9,39 +9,66 @@ import { Component } from '@angular/core';
 })
 export class CalculadoraComponent {
 
-
-
 titulo = "Calculadora"
-muestra = ""
-numero1 = 0
-numero2 = 0
-resultado = 0
+operacion: string = ''
+numeroActual: string = ''
+numeroAnterior: string = ''
+resultado: string = '0'
+suma: string = '+'
+resta: string = '-'
 
-addNumber(numero: number) {
+ActualizarPantalla() {
 
-  if(this.numero1 != 0){
-    this.numero1 = numero
-  }else{
-    this.numero2 = numero
+  if (this.numeroActual && !this.operacion){
+  this.resultado = this.numeroActual;
+  } else if (this.numeroActual && this.operacion){
+    this.resultado = this.numeroAnterior.concat(this.operacion + this.numeroActual)
   }
+}
+
+addNumber(numero: string) {
+
+  if(this.numeroActual === '0'){
+    this.numeroActual = numero;
+  }else{
+    this.numeroActual += numero;
+  }
+  this.ActualizarPantalla();
+}
+
+asignarOperador (op: string): void {
+
+  this.resultado = this.numeroActual.concat(op)
+  this.operacion = op;
+  this.numeroAnterior = this.numeroActual;
+  this.numeroActual = '';
+}
+
+calcular() {
+
+  const anterior = parseInt(this.numeroAnterior);
+  const actual = parseInt(this.numeroActual);
+  let resultadoFinal: number;
   
+  if (this.operacion === '+') {
+    resultadoFinal = anterior + actual;
+  } else if (this.operacion === '-') {
+    resultadoFinal = anterior - actual;
+  } else
+    return;
+  
+  
+  this.resultado = resultadoFinal.toString();
+  this.numeroActual = resultadoFinal.toString();
+  this.operacion = '';
+  this.numeroAnterior = '';
 }
 
-sumar(){
-
-
+limpiar() {
+  this.operacion = '';
+  this.resultado = '0';
+  this.numeroActual = '';
+  this.numeroAnterior = '';
+  }
 }
-
-restar(){
-
-}
-
-resultadoSuma(){
-
- alert(this.numero1 + this.numero2)
-
-}
-
-}
-
 
