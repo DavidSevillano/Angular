@@ -1,0 +1,36 @@
+
+<!--Contenedor del email-->
+
+<div row>
+    <div class="example-container">
+        <mat-form-field>
+            <mat-label>Enter your email</mat-label>
+            <input [(ngModel)]="emaillogin" matInput placeholder="pat@example.com" [formControl]="email"
+                (blur)="updateErrorMessage()" required />
+            @if (email.invalid) {
+            <mat-error>{{errorMessage()}}</mat-error>
+            }
+        </mat-form-field>
+    </div>
+
+    <!--Contenedor de la contraseña-->
+
+    <div class="example-container">
+        <mat-form-field>
+            <mat-label>Enter your password</mat-label>
+            <input [(ngModel)]="password" matInput [type]="hide() ? 'password' : 'text'" />
+            <button mat-icon-button matSuffix (click)="clickEvent($event)" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide()">
+                <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+        </mat-form-field>
+    </div>
+
+    <!--Boton de login-->
+
+    <section>
+        <div class="example-button-row">
+            <button (click)="mostrarInformacion()" mat-flat-button>Enviar</button>
+        </div>
+    </section>
+</div>
