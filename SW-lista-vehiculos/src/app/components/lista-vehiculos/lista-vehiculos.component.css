@@ -1,0 +1,12 @@
+:host {
+    display: block;
+    background-color:rgb(26, 26, 26) /* Cambia el color aquí */
+}
+
+.card {
+    background-color: rgb(183, 197, 209);
+}
+
+h2 {
+    text-align: center;
+}

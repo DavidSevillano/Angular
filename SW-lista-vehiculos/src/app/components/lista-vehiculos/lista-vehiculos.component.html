@@ -1,0 +1,24 @@
+<div class="container pt-3">
+  <h1 class="text-center text-white">Lista de Vehículos</h1>
+    <div class="row">
+      @for(vehiculo of vehiculos; track vehiculo.id) {
+      <div class="col-md-4 mb-4 mt-4">   
+        <div class="card mb-4 h-100 ">
+          <div class="card-body">
+            <h2 class="card-title">{{ vehiculo.name }}</h2>
+            <p class="card-title"><b>Modelo:</b> {{ vehiculo.model }}</p>
+            <p class="card-title"><b>Manufactura:</b> {{ vehiculo.manufacturer }}</p>
+            <p class="card-title"><b>Precio:</b> {{ vehiculo.cost_in_credits }} creditos</p>
+            <p class="card-title"><b>Velocidad Máxima:</b> {{ vehiculo.max_atmosphering_speed }}km/h</p>
+            <p class="card-title"><b>Pasajeros:</b> {{ vehiculo.passengers }}</p>
+            <p class="card-title"><b>Longitud:</b> {{ vehiculo.length }}m</p>
+            <p class="card-title"><b>Capacidad:</b> {{ vehiculo.cargo_capacity }} toneladas</p>
+          </div>
+        </div>
+      </div>
+    }
+    </div>
+  </div>
+
+
+  
