@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Character } from '../models/characters.interface';
+import { CharacterListResponse } from '../models/characters.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,7 @@ export class CharacterService {
 
   constructor(private http: HttpClient) { }
 
-  getCharacters(): Observable<Character[]> {
-    return this.http.get<Character[]>(`https://rickandmortyapi.com/api/character`)
+  getCharacters(): Observable<CharacterListResponse> {
+    return this.http.get<CharacterListResponse>(`https://rickandmortyapi.com/api/character`)
   }
 }
