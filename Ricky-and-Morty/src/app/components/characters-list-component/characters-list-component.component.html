@@ -1,5 +1,5 @@
 <div class="container pt-3">
-    <h1 class="text-center text-black">Lista de Personajes</h1>
+    <h1 class="text-center text-white">Lista de Personajes</h1>
       <div class="row">
         @for(character of characters; track character.id) {
         <div class="col-md-4 mb-4 mt-4">   
@@ -9,7 +9,10 @@
               <img class="pb-4 pt-4" [src]="getCharacterImage(getCharacterId(character.image))">
               <p class="card-title"><b>Estado:</b> {{ character.status }}</p>
               <p class="card-title"><b>Especie:</b> {{ character.species }}</p>
+              <p class="card-title"><b>Tipo:</b> {{ character.type ? character.type: '-----'}} </p> <!--Si el tipo esta vacio muestra '----' gracias a la expresion ternaria-->
               <p class="card-title"><b>Género:</b> {{ character.gender }} </p>
+              <p class="card-title"><b>Origen:</b> {{ character.origin.name }} </p>
+              <p class="card-title"><b>Localización:</b> {{ character.location.name }} </p>
             </div>
           </div>
         </div>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { characterList, Character } from '../../models/characters.interface';
+import { Character } from '../../models/characters.interface';
 import { CharacterService } from '../../services/character.service';
 
 @Component({
@@ -10,9 +10,11 @@ import { CharacterService } from '../../services/character.service';
 export class CharactersListComponentComponent implements OnInit{
 
   characters: Character[] = [];
+ 
 
   constructor (private characterService: CharacterService){}
 
+  
   ngOnInit(): void {
     this.characterService.getCharacters().subscribe((respuesta: any) => {
       this.characters = respuesta.results;
@@ -29,4 +31,5 @@ export class CharactersListComponentComponent implements OnInit{
     return `https://rickandmortyapi.com/api/character/avatar/${id}.jpeg`;    
    
 }
+
 }

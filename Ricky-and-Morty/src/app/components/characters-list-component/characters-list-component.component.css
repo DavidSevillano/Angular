@@ -1,0 +1,12 @@
+:host {
+    display: block;
+    background-color:rgb(26, 26, 26)
+}
+
+.card {
+    background-color: #cecece;
+}
+
+img {
+    border-radius: 25px;
+}
