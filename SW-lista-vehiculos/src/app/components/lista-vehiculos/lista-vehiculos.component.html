@@ -6,6 +6,7 @@
         <div class="card mb-4 h-100 ">
           <div class="card-body">
             <h2 class="card-title">{{ vehiculo.name }}</h2>
+            <img [src]="getVehiculoImage(getVehiculoId(vehiculo.url))" class="card-img-top" alt="{{vehiculo.name}}"/>
             <p class="card-title"><b>Modelo:</b> {{ vehiculo.model }}</p>
             <p class="card-title"><b>Manufactura:</b> {{ vehiculo.manufacturer }}</p>
             <p class="card-title"><b>Precio:</b> {{ vehiculo.cost_in_credits }} creditos</p>

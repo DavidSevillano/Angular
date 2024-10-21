@@ -8,4 +8,5 @@ export interface Vehiculo {
     passengers: string;
     length: number;
     cargo_capacity: number;
+    url: string
   }

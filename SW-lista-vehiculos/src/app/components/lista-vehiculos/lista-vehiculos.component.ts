@@ -17,6 +17,14 @@ export class ListaVehiculosComponent {
     this.swapiService.getVehicles().subscribe((respuesta: any) => {
       this.vehiculos = respuesta.results;
     });
-
 }
+  getVehiculoId(url: string): number {
+    var id = url.slice(31,34);
+    return parseInt(id);
+  }
+
+  getVehiculoImage(id : number) {
+    return `https://starwars-visualguide.com/assets/img/vehicles/${id}.jpg`;
+    
+  }
 }
