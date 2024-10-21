@@ -1,0 +1,21 @@
+<div class="container pt-3">
+    <h1 class="text-center text-white">Lista de Vehículos</h1>
+      <div class="row">
+        @for(character of characters; track character.id) {
+        <div class="col-md-4 mb-4 mt-4">   
+          <div class="card mb-4 h-100 ">
+            <div class="card-body">
+              <h2 class="card-title">{{ character.name }}</h2>
+              <img [src]="getCharacterImage(getCharacterId(character.image))">
+              <p class="card-title"><b>status:</b> {{ character.status }}</p>
+              <p class="card-title"><b>species:</b> {{ character.species }}</p>
+              <p class="card-title"><b>type:</b> {{ character.type }}</p>
+              <p class="card-title"><b>gender:</b> {{ character.gender }} </p>
+              <p class="card-title"><b>origin:</b> {{ character.origin }}</p>
+              <p class="card-title"><b>location:</b> {{ character.location }}</p>
+            </div>
+          </div>
+        </div>
+      }
+      </div>
+    </div>
