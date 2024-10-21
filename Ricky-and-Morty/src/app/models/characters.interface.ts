@@ -1,6 +1,6 @@
 export interface characterList {
     info: Info
-    results: Characters[]
+    results: Character[]
   }
   
   export interface Info {
@@ -10,7 +10,7 @@ export interface characterList {
     prev: any
   }
   
-  export interface Characters {
+  export interface Character {
     id: number
     name: string
     status: string

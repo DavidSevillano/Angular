@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { characterList, Characters } from '../../models/characters.interface';
+import { characterList, Character } from '../../models/characters.interface';
 import { CharacterService } from '../../services/character.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { CharacterService } from '../../services/character.service';
 })
 export class CharactersListComponentComponent implements OnInit{
 
-  characters: Characters[] = [];
+  characters: Character[] = [];
 
   constructor (private characterService: CharacterService){}
 

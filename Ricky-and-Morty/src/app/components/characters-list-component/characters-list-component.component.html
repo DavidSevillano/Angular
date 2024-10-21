@@ -6,13 +6,10 @@
           <div class="card mb-4 h-100 ">
             <div class="card-body">
               <h2 class="card-title">{{ character.name }}</h2>
-              <img [src]="getCharacterImage(getCharacterId(character.image))">
+              <img class="pb-4 pt-4" [src]="getCharacterImage(getCharacterId(character.image))">
               <p class="card-title"><b>status:</b> {{ character.status }}</p>
               <p class="card-title"><b>species:</b> {{ character.species }}</p>
-              <p class="card-title"><b>type:</b> {{ character.type }}</p>
               <p class="card-title"><b>gender:</b> {{ character.gender }} </p>
-              <p class="card-title"><b>origin:</b> {{ character.origin }}</p>
-              <p class="card-title"><b>location:</b> {{ character.location }}</p>
             </div>
           </div>
         </div>
