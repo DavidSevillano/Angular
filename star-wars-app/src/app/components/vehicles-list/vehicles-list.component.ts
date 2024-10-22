@@ -17,4 +17,14 @@ export class VehiclesListComponent implements OnInit {
       this.vehicleList = resp.results;
     });
   }
+  
+  getVehiculoId(url: string): number {
+    var id = url.split('/')[5];
+    return parseInt(id);
+  }
+
+  getVehiculoImage(id : number) {
+    return `https://starwars-visualguide.com/assets/img/vehicles/${id}.jpg`;
+    
+  }
 }

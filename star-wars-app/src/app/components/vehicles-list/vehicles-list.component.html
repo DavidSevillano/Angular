@@ -1,3 +1,17 @@
-@for(item of vehicleList; track item.name) {
-<p>{{ item.name }}</p>
-}
+
+<div class="row">
+    @for(item of vehicleList; track item.name) {
+    <div class="col-3 mt-3">
+        <div class="card mb-3">
+            <img [src]="getVehiculoImage(getVehiculoId(item.url))" class="card-img-top pb-3" alt="{{item.name}}"/>
+            <div class="card-body">
+                <h5 class="card-title mb-4">{{ item.name }}</h5>
+                <p class="card-text"><b>Modelo:</b> {{ item.model }}</p>
+                <p class="card-text"><b>Pasajeros:</b> {{ item.passengers }}</p>
+                <p class="card-text"><b>Precio:</b> {{ item. cost_in_credits }}</p>
+                <p class="card-text"><b>Longitud:</b> {{ item.length }}</p>
+            </div>
+        </div>
+    </div>
+    }
+</div>
