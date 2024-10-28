@@ -1,22 +1,19 @@
 import { Component } from '@angular/core';
-import { Pokemon } from '../../models/pokemon.interface';
 import { PokemonService } from '../../services/pokemon.service';
 import { PokemonDetailResponse } from '../../models/pokemon-details.interface';
 
 @Component({
   selector: 'app-pokemon-battle',
   templateUrl: './pokemon-battle.component.html',
-  styleUrl: './pokemon-battle.component.css'
+  styleUrl: './pokemon-battle.component.css',
 })
 export class PokemonBattleComponent {
-
   pokemon1: PokemonDetailResponse | undefined;
   pokemon2: PokemonDetailResponse | undefined;
   pokemonId1: number = 54;
   pokemonId2: number = 68;
 
   turno: number = 1;
-
 
   constructor(private pokemonService: PokemonService) {}
 
@@ -27,36 +24,31 @@ export class PokemonBattleComponent {
     this.pokemonService.getOnePokemon(this.pokemonId2).subscribe((resp) => {
       this.pokemon2 = resp;
     });
-
-}
-
-ataca(pokemonId: number) {
-
-  if (pokemonId === this.pokemonId1){
-    this.pokemon2!.stats[1].base_stat -= 10;  
-  }else{
-    this.pokemon1!.stats[1].base_stat -= 10;
   }
-  this.turno++;
-}
 
-turnoNombre(){
-  let vidaPokemon1 = this.pokemon1!.stats[1].base_stat
-  let vidaPokemon2 = this.pokemon2!.stats[1].base_stat
+  ataca(pokemonId: number) {
+    if (pokemonId === this.pokemonId1) {
+      this.pokemon2!.stats[1].base_stat -= 10;
+    } else {
+      this.pokemon1!.stats[1].base_stat -= 10;
+    }
+    this.turno++;
+  }
 
-  if (this.turno %2 != 0 && vidaPokemon1 > 0){
-    return `El turno es de ${this.pokemon1!.name}`
+  turnoNombre() {
+    let vidaPokemon1 = this.pokemon1!.stats[1].base_stat;
+    let vidaPokemon2 = this.pokemon2!.stats[1].base_stat;
 
-  }else if(vidaPokemon1 <= 0){
-    return `El ganador del combate es ${this.pokemon2!.name}!`
-
-  }if(this.turno %2 === 0  && vidaPokemon2 > 0){
-    return `El turno es de ${this.pokemon2!.name}` 
-
-  }else if(vidaPokemon2 <= 0){
-    return `El ganador del combate es ${this.pokemon1!.name}!`
-
-  } return ''
-}
-
+    if (this.turno % 2 != 0 && vidaPokemon1 > 0) {
+      return `El turno es de ${this.pokemon1!.name}`;
+    } else if (vidaPokemon1 <= 0) {
+      return `El ganador del combate es ${this.pokemon2!.name}!`;
+    }
+    if (this.turno % 2 === 0 && vidaPokemon2 > 0) {
+      return `El turno es de ${this.pokemon2!.name}`;
+    } else if (vidaPokemon2 <= 0) {
+      return `El ganador del combate es ${this.pokemon1!.name}!`;
+    }
+    return '';
+  }
 }
