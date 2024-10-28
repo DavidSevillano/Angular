@@ -10,11 +10,11 @@ import { PokemonService } from '../../services/pokemon.service';
 })
 export class PokemonComponent {
   pokemonList: Pokemon[] = [];
-  @Input() pokemonId1: any;
-  @Input() pokemonId2: any;
-  pokemon1: PokemonDetailResponse | undefined;
-  pokemon2: PokemonDetailResponse | undefined;
-  @Output() ataque = new EventEmitter<number>();
+  @Input() pokemon: any;
+  @Input() vida: number = 0;
+  @Input() pokemonId: number = 0;
+  @Input() turno: number = 0;
+  @Output() ataque = new EventEmitter<void>();
 
 
   constructor(private pokemonService: PokemonService) {}
@@ -23,25 +23,20 @@ export class PokemonComponent {
     this.pokemonService.getPokemonList().subscribe((resp) => {
       this.pokemonList = resp.results;
     });
-    this.pokemonService.getOnePokemon(parseInt(this.pokemonId1)).subscribe(response => {
-      this.pokemon1 = response;
-    });
-    this.pokemonService.getOnePokemon(parseInt(this.pokemonId2)).subscribe(response => {
-      this.pokemon2 = response;
-    });
+    
   }
 
-
-  ataca() {
-    if(this.pokemon1){
-    this.ataque.emit(this.pokemon1.stats[1].base_stat);
-    this.ataque.emit(this.pokemonId1);
-    }else{
-    this.ataque.emit(this.pokemon2!.stats[1].base_stat);
-    this.ataque.emit(this.pokemonId2);
-
-
+  mostrarBoton(): boolean {
+    if (this.pokemonId === 54) {
+      return this.turno % 2 === 0 || this.vida <= 0;
+    } else {
+      return this.turno % 2 !== 0 || this.vida <= 0;
     }
   }
 
-}
+  ataca() {
+    this.ataque.emit();
+    }
+  }
+
+
