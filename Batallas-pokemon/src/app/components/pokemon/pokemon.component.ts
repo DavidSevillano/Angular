@@ -10,7 +10,7 @@ export class PokemonComponent {
   @Input() vida: number = 0;
   @Input() pokemonId: number = 0;
   @Input() turno: number = 0;
-  @Output() ataque = new EventEmitter<void>();
+  @Output() ataque = new EventEmitter<string>();
 
   mostrarBoton(): boolean {
     if (this.pokemonId === 54) {
@@ -21,6 +21,6 @@ export class PokemonComponent {
   }
 
   ataca() {
-    this.ataque.emit();
+    this.ataque.emit(this.pokemon.name);
   }
 }

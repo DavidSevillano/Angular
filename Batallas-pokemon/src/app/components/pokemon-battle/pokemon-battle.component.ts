@@ -26,8 +26,8 @@ export class PokemonBattleComponent {
     });
   }
 
-  ataca(pokemonId: number) {
-    if (pokemonId === this.pokemonId1) {
+  ataca(pokemonName: string) {
+    if (pokemonName === this.pokemon1!.name) {
       this.pokemon2!.stats[1].base_stat -= 10;
     } else {
       this.pokemon1!.stats[1].base_stat -= 10;
