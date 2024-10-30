@@ -5,13 +5,13 @@
         </div>
         <div class="col-md-6">
 
-            <app-pokemon [pokemon]="pokemon1" [vida]="pokemon1!.stats[1].base_stat" [pokemonId]="pokemonId1"
+            <app-pokemon [pokemon]="pokemon1" [vida]="pokemon1!.stats[0].base_stat" [vidaMax]="vidaMaxima1" [pokemonId]="pokemonId1"
                 [turno]="turno" (ataque)="ataca($event)">
                 ></app-pokemon>
         </div>
         <div class="col-md-6">
 
-            <app-pokemon [pokemon]="pokemon2" [vida]="pokemon2!.stats[1].base_stat" [pokemonId]="pokemonId2"
+            <app-pokemon [pokemon]="pokemon2" [vida]="pokemon2!.stats[0].base_stat" [vidaMax]="vidaMaxima2"  [pokemonId]="pokemonId2"
                 [turno]="turno" (ataque)="ataca($event)">
                 ></app-pokemon>
         </div>

@@ -8,6 +8,17 @@
             <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/{{pokemonId}}.png"
                 class="card-img w-100" alt="${pokemon.name}">
         </div>
+        <div>
+            <br>
+            <ngb-progressbar class="mb-3"
+             [type]="cambioColor()" 
+             [value]="vida" 
+             [max]="vidaMax"
+             [striped]="true" 
+             [animated]="true" 
+             ><i>{{ vida }}</i>
+            </ngb-progressbar>
+        </div>
         <div class="d-flex justify-content-between mb-1 p-2">
             <button (click)="ataca()" type="button" class="btn btn-danger" style="width: 50%;"
                 [disabled]="mostrarBoton()">Ataca</button>
