@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { BotonEsperaPipe } from '../../pipes/BotonEspera-pipe';
 
 @Component({
   selector: 'app-pokemon',
@@ -14,6 +15,8 @@ export class PokemonComponent {
   @Input() pokemonId: number = 0;
   @Input() turno: number = 0;
   @Output() ataque = new EventEmitter<string>();
+  customValueBoton: string = "";
+
 
   mostrarBoton(): boolean {
     if (this.pokemonId === 54) {

@@ -7,12 +7,14 @@ import { PokemonBattleComponent } from './components/pokemon-battle/pokemon-batt
 import { PokemonComponent } from './components/pokemon/pokemon.component';
 import { provideHttpClient } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BotonEsperaPipe } from './pipes/BotonEspera-pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     PokemonBattleComponent,
-    PokemonComponent
+    PokemonComponent,
+    BotonEsperaPipe
   ],
   imports: [
     BrowserModule,
