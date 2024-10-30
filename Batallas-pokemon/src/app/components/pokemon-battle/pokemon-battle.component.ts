@@ -14,8 +14,6 @@ export class PokemonBattleComponent {
   pokemonId2: number = 68;
   vidaMaxima1: number = 0;
   vidaMaxima2: number = 0;
-
-
   turno: number = 1;
 
   constructor(private pokemonService: PokemonService) {}
@@ -41,19 +39,19 @@ export class PokemonBattleComponent {
     this.turno++;
   }
 
-  turnoNombre() {
+  turnoNombre(): string {
     let vidaPokemon1 = this.pokemon1!.stats[0].base_stat;
     let vidaPokemon2 = this.pokemon2!.stats[0].base_stat;
 
     if (this.turno % 2 != 0 && vidaPokemon1 > 0) {
-      return `El turno es de ${this.pokemon1!.name}`;
+      return `El turno es de ${this.pokemon1!.name.toUpperCase() }`;
     } else if (vidaPokemon1 <= 0) {
-      return `El ganador del combate es ${this.pokemon2!.name}!`;
+      return `El ganador del combate es ${this.pokemon2!.name.toUpperCase()}!`;
     }
     if (this.turno % 2 === 0 && vidaPokemon2 > 0) {
-      return `El turno es de ${this.pokemon2!.name}`;
+      return `El turno es de ${this.pokemon2!.name.toUpperCase()}`;
     } else if (vidaPokemon2 <= 0) {
-      return `El ganador del combate es ${this.pokemon1!.name}!`;
+      return `El ganador del combate es ${this.pokemon1!.name.toUpperCase()}!`;
     }
     return '';
   }
