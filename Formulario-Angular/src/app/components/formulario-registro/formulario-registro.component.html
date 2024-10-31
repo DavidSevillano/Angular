@@ -1,0 +1,135 @@
+<div class="container-fluid" style="width: 400px">
+    <div class="row">
+      <div class="col-12">
+        <h1 class="text-center">Añadir nueva persona</h1>
+      </div>
+    </div>
+    <div [hidden]="submitted">
+      <form
+        action=""
+        method="post"
+        (ngSubmit)="addPersona()"
+        #personaForm="ngForm"
+      >
+        <div class="row">
+          <div class="col-12 mb-3">
+            <label for="name" class="form-label">Name *</label>
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              name="name"
+              placeholder="Name"
+              required
+              [(ngModel)]="persona.nombre"
+            />
+          </div>
+          <div class="col-12 mb-3">
+            <label for="apellidos" class="form-label">Apellidos *</label>
+            <input
+              type="text"
+              class="form-control"
+              id="apellidos"
+              name="apellidos"
+              [(ngModel)]="persona.apellidos"
+            />
+          </div>
+          <div class="col-12 mb-3">
+            <label for="NIF" class="form-label">NIF *</label>
+            <input
+              type="number"
+              class="form-control"
+              id="NIF"
+              name="NIF"
+              placeholder="NIF"
+              required
+              [(ngModel)]="persona.NIF"
+            />
+          </div>
+          <div class="col-12 mb-3">
+            <label for="email" class="form-label">Email *</label>
+            <input
+              type="text"
+              class="form-control"
+              id="email"
+              name="email"
+              placeholder="email"
+              required
+              [(ngModel)]="persona.email"
+            />
+          </div>
+          <div class="col-12 mb-3">
+            <label for="contrasenia" class="form-label">Contraseña *</label>
+            <input
+              type="text"
+              class="form-control"
+              id="contrasenia"
+              name="contrasenia"
+              placeholder="Contraseña"
+              required
+              [(ngModel)]="persona.contrasenia"
+            />
+          </div>
+          <div class="col-12 mb-3">
+            <label for="contrasenia" class="form-label">Confirma la contraseña *</label>
+            <input
+              type="text"
+              class="form-control"
+              id="contrasenia"
+              name="contrasenia"
+              placeholder="Contraseña"
+              required
+              [(ngModel)]="persona.contrasenia"
+            />
+          </div>
+          <div class="col-12 mb-3">
+            <label for="telefono" class="form-label">Telefono *</label>
+            <input
+              type="text"
+              class="form-control"
+              id="telefono"
+              name="telefono"
+              placeholder="Telefono"
+              required
+              [(ngModel)]="persona.telefono"
+            />
+          </div>
+          <div class="col-12 mb-3">
+            <label for="comoConocio" class="form-label">Como conoció la página? *</label>
+  
+            <select
+              class="form-select"
+              aria-label="Default select example"
+              name="comoConocio"
+              id="comoConocio"
+              required
+              [(ngModel)]="persona.comoCononce"
+            >
+              <option value="" selected="selected">-Select one-</option>
+              @for(opcion of comoConocio; track opcion){
+              <option [value]="opcion">{{ opcion }}</option>
+              }
+            </select>
+          </div>
+          <div class="col-12">
+            <button
+              type="submit"
+              class="btn btn-primary"
+              style="width: 100%"
+              [disabled]="!personaForm.form.valid"
+            >
+              Crear Persona
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="row" [hidden]="!submitted">
+      <div class="col-12">
+        <div class="alert alert-success d-flex align-items-center" role="alert">
+          <div>Formulario enviado</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
