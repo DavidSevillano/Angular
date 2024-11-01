@@ -71,15 +71,15 @@
             />
           </div>
           <div class="col-12 mb-3">
-            <label for="contrasenia" class="form-label">Confirma la contraseña *</label>
+            <label for="confirmarContrasenia" class="form-label">Confirma la contraseña *</label>
             <input
               type="text"
               class="form-control"
-              id="contrasenia"
-              name="contrasenia"
+              id="confirmarContrasenia"
+              name="confirmarContrasenia"
               placeholder="Contraseña"
               required
-              [(ngModel)]="persona.contrasenia"
+              [(ngModel)]="persona.confirmarContrasenia"
             />
           </div>
           <div class="col-12 mb-3">
@@ -111,16 +111,15 @@
               }
             </select>
           </div>
+          <label>
+            <input type="checkbox" name="terminos" required> Acepto los términos y condiciones
+          </label>
           <div class="col-12">
-            <button
-              type="submit"
-              class="btn btn-primary"
-              style="width: 100%"
-              [disabled]="!personaForm.form.valid"
-            >
-              Crear Persona
-            </button>
+            <button type="submit" [disabled]="!personaForm.form.valid || !validacionContrasenia()">Registro</button>
           </div>
+          @if (!validacionContrasenia()){
+            <div style="color:red;">{{ mensajeError }}</div>
+          }
         </div>
       </form>
     </div>

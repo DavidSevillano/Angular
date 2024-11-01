@@ -5,6 +5,7 @@ export class PersonaDto {
       public NIF: number,
       public email: string,
       public contrasenia: string,
+      public confirmarContrasenia: string,
       public telefono: string,
       public comoCononce: string,
     ) {}
