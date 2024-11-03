@@ -1,134 +1,92 @@
 <div class="container-fluid" style="width: 400px">
-    <div class="row">
-      <div class="col-12">
-        <h1 class="text-center">Añadir nueva persona</h1>
-      </div>
+  <div class="row">
+    <div class="col-12">
+      <h1 class="text-center text-white">Añadir nueva persona</h1>
     </div>
-    <div [hidden]="submitted">
-      <form
-        action=""
-        method="post"
-        (ngSubmit)="addPersona()"
-        #personaForm="ngForm"
-      >
-        <div class="row">
-          <div class="col-12 mb-3">
-            <label for="name" class="form-label">Name *</label>
-            <input
-              type="text"
-              class="form-control"
-              id="name"
-              name="name"
-              placeholder="Name"
-              required
-              [(ngModel)]="persona.nombre"
-            />
-          </div>
-          <div class="col-12 mb-3">
-            <label for="apellidos" class="form-label">Apellidos *</label>
-            <input
-              type="text"
-              class="form-control"
-              id="apellidos"
-              name="apellidos"
-              [(ngModel)]="persona.apellidos"
-            />
-          </div>
-          <div class="col-12 mb-3">
-            <label for="NIF" class="form-label">NIF *</label>
-            <input
-              type="number"
-              class="form-control"
-              id="NIF"
-              name="NIF"
-              placeholder="NIF"
-              required
-              [(ngModel)]="persona.NIF"
-            />
-          </div>
-          <div class="col-12 mb-3">
-            <label for="email" class="form-label">Email *</label>
-            <input
-              type="text"
-              class="form-control"
-              id="email"
-              name="email"
-              placeholder="email"
-              required
-              [(ngModel)]="persona.email"
-            />
-          </div>
-          <div class="col-12 mb-3">
-            <label for="contrasenia" class="form-label">Contraseña *</label>
-            <input
-              type="text"
-              class="form-control"
-              id="contrasenia"
-              name="contrasenia"
-              placeholder="Contraseña"
-              required
-              [(ngModel)]="persona.contrasenia"
-            />
-          </div>
-          <div class="col-12 mb-3">
-            <label for="confirmarContrasenia" class="form-label">Confirma la contraseña *</label>
-            <input
-              type="text"
-              class="form-control"
-              id="confirmarContrasenia"
-              name="confirmarContrasenia"
-              placeholder="Contraseña"
-              required
-              [(ngModel)]="persona.confirmarContrasenia"
-            />
-          </div>
-          <div class="col-12 mb-3">
-            <label for="telefono" class="form-label">Telefono *</label>
-            <input
-              type="text"
-              class="form-control"
-              id="telefono"
-              name="telefono"
-              placeholder="Telefono"
-              required
-              [(ngModel)]="persona.telefono"
-            />
-          </div>
-          <div class="col-12 mb-3">
-            <label for="comoConocio" class="form-label">Como conoció la página? *</label>
-  
-            <select
-              class="form-select"
-              aria-label="Default select example"
-              name="comoConocio"
-              id="comoConocio"
-              required
-              [(ngModel)]="persona.comoCononce"
-            >
-              <option value="" selected="selected">-Select one-</option>
-              @for(opcion of comoConocio; track opcion){
-              <option [value]="opcion">{{ opcion }}</option>
-              }
-            </select>
-          </div>
-          <label>
-            <input type="checkbox" name="terminos" required> Acepto los términos y condiciones
-          </label>
-          <div class="col-12">
-            <button type="submit" [disabled]="!personaForm.form.valid || !validacionContrasenia()">Registro</button>
-          </div>
-          @if (!validacionContrasenia()){
-            <div style="color:red;">{{ mensajeError }}</div>
+  </div>
+  <div [hidden]="submitted">
+    <form action="" method="post" (ngSubmit)="addPersona()" #personaForm="ngForm">
+      <div class="row">
+        <div class="col-12 mb-3">
+          <label for="name" class="form-label text-white">Nombre *</label>
+          <input type="text" class="form-control" id="name" name="name"  required
+            [(ngModel)]="persona.nombre" />
+        </div>
+        <div class="col-12 mb-3">
+          <label for="apellidos" class="form-label text-white">Apellidos *</label>
+          <input type="text" class="form-control" id="apellidos" name="apellidos"  required [(ngModel)]="persona.apellidos" />
+        </div>
+        <div class="col-12 mb-3">
+          <label for="NIF" class="form-label text-white">NIF *</label>
+          <input class="form-control" id="NIF" name="NIF" required maxlength="8" [(ngModel)]="persona.NIF" />
+          @if (persona.NIF !== 0) {
+          <span class="text-white">Letra del DNI: {{ calcularLetraNIF() }}</span>
           }
         </div>
-      </form>
-    </div>
-    <div class="row" [hidden]="!submitted">
-      <div class="col-12">
-        <div class="alert alert-success d-flex align-items-center" role="alert">
-          <div>Formulario enviado</div>
+        <div class="col-12 mb-3">
+          <label for="email" class="form-label text-white">Email *</label>
+          <input type="email" class="form-control" id="email" name="email" required
+            [(ngModel)]="persona.email" />
         </div>
+        <div class="col-12 mb-3">
+          <label for="telefono" class="form-label text-white">Telefono *</label>
+          <input type="tel" class="form-control" id="telefono" name="telefono"  required
+            [(ngModel)]="persona.telefono" />
+        </div>
+        <div class="col-12 mb-3">
+          <label for="sexo" class="form-label text-white">Sexo *</label>
+
+          <select class="form-select" aria-label="Default select example" name="Sexo" id="Sexo" required
+            [(ngModel)]="persona.sexo">
+            <option value="" selected="selected">-Elige uno-</option>
+            <option value="hombre">Hombre</option>
+            <option value="mujer">Mujer</option>
+            <option value="otro">Otro</option>
+          </select>
+        </div>
+        <div class="col-12 mb-3">
+          <label for="comoConocio" class="form-label text-white">Como conoció la página? *</label>
+
+          <select class="form-select" aria-label="Default select example" name="comoConocio" id="comoConocio" required
+            [(ngModel)]="persona.comoCononce">
+            <option value="" selected="selected">-Elige uno-</option>
+            @for(opcion of comoConocio; track opcion){
+            <option [value]="opcion">{{ opcion }}</option>
+            }
+          </select>
+        </div>
+        <div class="col-12 mb-3">
+          <label for="contrasenia" class="form-label text-white">Contraseña *</label>
+          <input type="password" class="form-control" id="contrasenia" name="contrasenia" required
+            [(ngModel)]="persona.contrasenia" />
+        </div>
+        
+        <div class="col-12 mb-3">
+          <label for="confirmarContrasenia" class="form-label text-white">Confirma la contraseña *</label>
+          <input type="password" class="form-control" id="confirmarContrasenia" name="confirmarContrasenia"
+            required [(ngModel)]="persona.confirmarContrasenia" />
+          @if(!validacionContrasenia() && persona.contrasenia.length !== 0){
+          <div style="color:red;">Las contraseñas no coinciden</div>
+          }
+        </div>
+        <div class="col-12 mb-3">
+        <label class="text-white">
+          <input type="checkbox" name="terminos" [(ngModel)]="persona.terminosAceptados" required> Acepto los términos y
+          condiciones
+        </label>
+        </div>
+        <div class="col-12 mb-3">
+          <button class="w-100" type="submit"
+            [disabled]="!personaForm.form.valid || !validacionContrasenia() || !persona.terminosAceptados">Registro</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="row" [hidden]="!submitted">
+    <div class="col-12">
+      <div class="alert alert-success d-flex align-items-center" role="alert">
+        <div>Formulario enviado</div>
       </div>
     </div>
   </div>
-  
+</div>

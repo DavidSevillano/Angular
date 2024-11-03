@@ -4,38 +4,40 @@ import { PersonaDto } from '../../models/persona.dto';
 @Component({
   selector: 'app-formulario-registro',
   templateUrl: './formulario-registro.component.html',
-  styleUrl: './formulario-registro.component.css'
+  styleUrl: './formulario-registro.component.css',
 })
 export class FormularioRegistroComponent {
-  
-  comoConocio = ['Buscando en Google', 'A través de un amigo', 'Por mi profesor', 'Otros'];
-  persona = new PersonaDto('', '', 0, '','','','','');
-  letraNIF: string = ''
+  comoConocio = [
+    'Buscando en Google',
+    'A través de un amigo',
+    'Por mi profesor',
+    'Otros',
+  ];
+  persona = new PersonaDto('', '', 0, '', '', '', '', '', '', false);
+  letraNIF: string = '';
   submitted = false;
   mensajeError: string = '';
 
-  constructor() {}  
+  constructor() {}
 
-  calcularLetraNIF() {
-      const letras = "TRWAGMYFPDXBNJZSQVHLCKE";
-      this.letraNIF = letras.charAt(this.persona.NIF % 23);
+  calcularLetraNIF(): string {
+    const letras = 'TRWAGMYFPDXBNJZSQVHLCKE';
+    this.letraNIF = letras.charAt(this.persona.NIF! % 23);
+    return this.letraNIF;
   }
 
   validacionContrasenia(): boolean {
-    return this.persona.contrasenia === this.persona.confirmarContrasenia;
+    if (
+      this.persona.contrasenia === this.persona.confirmarContrasenia
+    ) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   addPersona() {
-    console.log(this.persona);
-    this.submitted = true;
-  }
-
-  registrar() {
-    this.mensajeError= ''
-
-    if (!this.validacionContrasenia()) {
-      this.mensajeError = 'Las contraseñas no coinciden.';
-      return;
-    }
-  }
+      this.submitted = true;
+      console.log (this.persona)
+}
 }

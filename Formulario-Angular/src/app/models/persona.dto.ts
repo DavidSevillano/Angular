@@ -4,10 +4,12 @@ export class PersonaDto {
       public apellidos: string,
       public NIF: number,
       public email: string,
+      public telefono: string,
+      public sexo: string,
+      public comoCononce: string,
       public contrasenia: string,
       public confirmarContrasenia: string,
-      public telefono: string,
-      public comoCononce: string,
-    ) {}
+      public terminosAceptados: boolean
+      ) {}
   }
   
