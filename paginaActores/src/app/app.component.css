@@ -1,0 +1,51 @@
+body {
+    background-color: #1d1d1d;
+    color: white;
+}
+
+.title {
+    font: 70px verdana;
+}
+
+.actor-card {
+    background-color: #303030;
+    border-radius: 20px;
+}
+
+.actor-title {
+    color: white;
+}
+
+.card-text {
+    color: rgba(255, 255, 255, 0.800);
+}
+
+
+
+header {
+    background-color: #101010;
+    height: 80px;
+}
+
+.nav-title{
+    color: white;
+    margin-top: 15px;
+}
+
+*{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.img-actor {
+    padding-top: 20px;
+    padding-right: 20px;
+    padding-left: 20px;
+
+    border-radius: 30px; 
+}
+
+.form-control {
+    width: 400px;
+    border-radius: 15px; 
+
+}
